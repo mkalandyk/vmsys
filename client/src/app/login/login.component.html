@@ -2,20 +2,16 @@
   <mat-toolbar-row class="mat-elevation-z5" color="primary">
     <img class="header-logo" src="../assets/logo.png" alt="Logo">
     <span class="header-name">VMSys</span>
-    <button class="header-button" mat-button>About</button>
+    <button class="header-button" mat-button (click)="about()">About</button>
     <span class="fill-remaining-space"></span>
     <span class="header-version">v.1.0</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-card class="login-card">
-  <h1 font-size="30px" >VMSys</h1>
+  <h1 style="font-size: 30px; margin-bottom: 30px">VMSys</h1>
   <img src="../assets/logo.png" alt="Logo">
-  <h2 font-size="12px">Login</h2>
-  <!--mat-card-header width="100vw" top-margin="16px" text-align="center">
-    
-    <mat-card-title width="100vw" text-align="center">Login</mat-card-title>
-  </mat-card-header-->
+  <h2 style="font-size: 18px; margin-top: 30px">Login</h2>
   <mat-card-content>
     <form class="login-form">
       <table cellspacing="0" width=100%>

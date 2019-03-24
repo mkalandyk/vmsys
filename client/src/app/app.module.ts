@@ -13,6 +13,7 @@ import { UserService } from "./shared/user/user.service";
 import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { WrongCredentialsDialogComponent } from './wrong-credentials-dialog/wrong-credentials-dialog.component';
+import { AboutDialogComponent } from './about-dialog/about-dialog.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { WrongCredentialsDialogComponent } from './wrong-credentials-dialog/wron
     VendingMachineListComponent,
     LoginComponent,
     AdminPanelComponent,
-    WrongCredentialsDialogComponent
+    WrongCredentialsDialogComponent,
+    AboutDialogComponent
   ],
   imports: [
     BrowserModule, 
@@ -40,6 +42,6 @@ import { WrongCredentialsDialogComponent } from './wrong-credentials-dialog/wron
   ],
   providers: [VendingMachineService, UserService],
   bootstrap: [AppComponent],
-  entryComponents: [WrongCredentialsDialogComponent]
+  entryComponents: [WrongCredentialsDialogComponent, AboutDialogComponent]
 })
 export class AppModule { }

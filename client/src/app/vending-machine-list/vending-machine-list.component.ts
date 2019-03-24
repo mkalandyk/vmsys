@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { VendingMachineService } from '../shared/vending-machine/vending-machine.service';
+
+declare let L;
 
 @Component({
   selector: 'app-vending-machine-list',
@@ -8,6 +10,7 @@ import { VendingMachineService } from '../shared/vending-machine/vending-machine
 })
 export class VendingMachineListComponent implements OnInit {
 
+  @Output() addPin = new EventEmitter();
   vendingMachines: Array<any>;
 
   constructor(private vendingMachineService: VendingMachineService) { }
@@ -16,5 +19,9 @@ export class VendingMachineListComponent implements OnInit {
     this.vendingMachineService.getAll().subscribe(data => {
       this.vendingMachines = data;
     });
+  }
+
+  onDetailsClick(address) {
+    this.addPin.emit(address);
   }
 }

@@ -9,8 +9,17 @@
     <span class="header-version">v.1.0</span>
 </mat-toolbar>
 
-<div ng-controller="MapController" id="map"></div>
+<div fxLayout="row" fxLayoutAlign="start start">
+  <app-vending-machine-list (addPin)="addPinToMap($event)"></app-vending-machine-list>
+  <mat-card style="min-height:auto">
+    <mat-card-content>
+      <div id="map"></div>
+    </mat-card-content>
+  </mat-card>
+</div>
 
-<app-vending-machine-list></app-vending-machine-list>
+<footer class="page-footer font-small blue fixed-bottom" style="background:#c2185b">
+  <div class="footer-copyright text-center py-3" style="color: #fff">© 2019 Copyright: Michał Kalandyk</div>  
+</footer>
 
 

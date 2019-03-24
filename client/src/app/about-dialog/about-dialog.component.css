@@ -1,0 +1,9 @@
+.message-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.par {
+    text-align: center;
+}

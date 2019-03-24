@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../shared/user/user.service';
+import { MatDialog } from '@angular/material';
+import { AboutDialogComponent } from '../about-dialog/about-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router, 
-    private userService: UserService) { }
+    private userService: UserService,
+    private aboutDialog: MatDialog) { }
 
   username: string;
   password: string;
@@ -21,6 +24,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService.login(this.username, this.password);
+  }
+
+  about() {
+    const dialogRef = this.aboutDialog.open(AboutDialogComponent, {
+      height: '250px',
+      width: '300px',
+    });
   }
 
 }
