@@ -1,0 +1,13 @@
+<mat-card style="min-height:auto; align-items: start">
+    <mat-card-header>Details:</mat-card-header>
+    <mat-card-content>
+      <p>Machine id: {{vendingMachine.machineId}}</p>
+      <p>Address: {{vendingMachine.address}}</p>
+      <p>Machine content: </p>
+      <mat-list>
+        <mat-list-item *ngFor="let content of vendingMachine.machineContent">
+          <p>{{content.product.name}}  quantity:   {{content.quantity}}</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>

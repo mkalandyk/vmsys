@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+import { VendingMachineDetailsComponent } from '../vending-machine-details/vending-machine-details.component';
 
 declare let L;
 const provider = new OpenStreetMapProvider();
@@ -15,6 +16,7 @@ const searchControl = new GeoSearchControl({
 export class AdminPanelComponent implements OnInit {
 
   private map : any;
+  @ViewChild(VendingMachineDetailsComponent) child: VendingMachineDetailsComponent;
 
   constructor() { }
 
@@ -42,11 +44,12 @@ export class AdminPanelComponent implements OnInit {
   }
 
   addPinToMap($event) {
+    this.child.loadData($event.machineId);
     provider
-      .search({query: $event})
+      .search({query: $event.address})
       .then(function(results) {
         var result = results[0];
-        searchControl.onSubmit({ query: $event, data: result });
+        searchControl.onSubmit({ query: $event.address, data: result });
       });
 
     this.map.on('geosearch_showlocation', function (result) {

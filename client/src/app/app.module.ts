@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatButtonModule, MatCardModule, MatInputModule, MatToolbarModule, MatListModule, MatCard, MatProgressSpinnerModule, MatDialogModule } from "@angular/material";
+import { MatButtonModule, MatCardModule, MatInputModule, MatToolbarModule, MatListModule, MatCard, MatProgressSpinnerModule, MatDialogModule, MatGridListModule } from "@angular/material";
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./core/app.routing.module";
@@ -14,7 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { WrongCredentialsDialogComponent } from './wrong-credentials-dialog/wrong-credentials-dialog.component';
 import { AboutDialogComponent } from './about-dialog/about-dialog.component';
-
+import { VendingMachineDetailsComponent } from './vending-machine-details/vending-machine-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AboutDialogComponent } from './about-dialog/about-dialog.component';
     LoginComponent,
     AdminPanelComponent,
     WrongCredentialsDialogComponent,
-    AboutDialogComponent
+    AboutDialogComponent,
+    VendingMachineDetailsComponent
   ],
   imports: [
     BrowserModule, 
@@ -38,6 +40,8 @@ import { AboutDialogComponent } from './about-dialog/about-dialog.component';
     MatProgressSpinnerModule,
     FormsModule,
     MatDialogModule,
+    MatGridListModule,
+    ScrollingModule,
     AppRoutingModule
   ],
   providers: [VendingMachineService, UserService],

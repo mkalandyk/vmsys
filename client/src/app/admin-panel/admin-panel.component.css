@@ -33,6 +33,11 @@
 
 
 #map { 
-    height: 400px;
-    width: 400px;
+    height: 350px;
+    width: 500px;
  }
+
+ .title-tem >::ng-deep .mat-figure{
+    align-items: flex-start;
+    justify-content: flex-start;
+}

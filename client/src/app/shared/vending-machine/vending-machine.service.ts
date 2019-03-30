@@ -13,4 +13,8 @@ export class VendingMachineService {
   getAll(): Observable<any | null> {
     return this.http.get('//localhost:8080/vendingmachines');
   }
+
+  getMachineById(id): Observable<any | null> {
+    return this.http.get('//localhost:8080/vendingmachines/' + id);
+  }
 }

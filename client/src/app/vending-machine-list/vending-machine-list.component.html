@@ -1,11 +1,13 @@
-<mat-card style="min-height:auto">
-  <mat-card-header>Available machines:</mat-card-header>
-  <mat-card-content>
-    <mat-list>
-      <mat-list-item *ngFor="let vendingMachine of vendingMachines">
-        <h3 mat-line>{{vendingMachine.address}}</h3>
-        <button class="header-button" mat-button (click)="onDetailsClick(vendingMachine.address)">Details</button>
-      </mat-list-item>
-    </mat-list>
+<mat-card style="min-height:auto; align-items: start">
+  <mat-card-header style="font-size: 20px; margin-bottom: 15px">Available machines:</mat-card-header>
+  <mat-card-content style="padding-left: 25px; padding-right: 25px">
+    <cdk-virtual-scroll-viewport itemSize="15px" style="min-height: 175px; box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);">
+      <mat-list>
+        <mat-list-item *ngFor="let vendingMachine of vendingMachines">
+          <h3 mat-line>{{vendingMachine.address}}</h3>
+          <button class="header-button" mat-button (click)="onDetailsClick(vendingMachine)">Details</button>
+        </mat-list-item>
+      </mat-list>
+    </cdk-virtual-scroll-viewport>
   </mat-card-content>
 </mat-card>
