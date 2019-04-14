@@ -1,0 +1,5 @@
+.detail {
+    min-height: calc(100vh / 2); 
+    height: calc(100vh / 2);
+    width: calc(100vw / 2 - 50px);
+}

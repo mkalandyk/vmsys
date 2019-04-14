@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { VendingMachineService } from '../shared/vending-machine/vending-machine.service';
+import { VendingMachineService } from '../../modules/vending-machine/vending-machine.service';
 
 @Component({
   selector: 'app-vending-machine-details',

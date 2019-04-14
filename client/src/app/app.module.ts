@@ -1,21 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatButtonModule, MatCardModule, MatInputModule, MatToolbarModule, MatListModule, MatCard, MatProgressSpinnerModule, MatDialogModule, MatGridListModule } from "@angular/material";
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCardModule, MatInputModule, MatToolbarModule, MatListModule,
+  MatProgressSpinnerModule, MatDialogModule, MatGridListModule, MatTabsModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from "./core/app.routing.module";
+import { AppRoutingModule } from './core/app.routing.module';
 import { AppComponent } from './app.component';
-import { VendingMachineService } from './shared/vending-machine/vending-machine.service';
-import { VendingMachineListComponent } from './vending-machine-list/vending-machine-list.component';
-import { UserService } from "./shared/user/user.service";
-import { LoginComponent } from './login/login.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { WrongCredentialsDialogComponent } from './wrong-credentials-dialog/wrong-credentials-dialog.component';
-import { AboutDialogComponent } from './about-dialog/about-dialog.component';
-import { VendingMachineDetailsComponent } from './vending-machine-details/vending-machine-details.component';
+import { VendingMachineService } from './modules/vending-machine/vending-machine.service';
+import { VendingMachineListComponent } from './components/vending-machine-list/vending-machine-list.component';
+import { UserService } from './modules/user/user.service';
+import { LoginComponent } from './components/login/login.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { WrongCredentialsDialogComponent } from './dialogs/wrong-credentials-dialog/wrong-credentials-dialog.component';
+import { AboutDialogComponent } from './dialogs/about-dialog/about-dialog.component';
+import { VendingMachineDetailsComponent } from './components/vending-machine-details/vending-machine-details.component';
+import { MachinesComponent } from './components/machines/machines.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,18 +30,23 @@ import { VendingMachineDetailsComponent } from './vending-machine-details/vendin
     AdminPanelComponent,
     WrongCredentialsDialogComponent,
     AboutDialogComponent,
-    VendingMachineDetailsComponent
+    VendingMachineDetailsComponent,
+    MachinesComponent,
+    OrderListComponent,
+    ToolbarComponent,
+    FooterComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatInputModule, 
+    MatInputModule,
     MatListModule,
-    MatToolbarModule, 
-    MatCardModule, 
+    MatTabsModule,
+    MatToolbarModule,
+    MatCardModule,
     MatProgressSpinnerModule,
     FormsModule,
     MatDialogModule,

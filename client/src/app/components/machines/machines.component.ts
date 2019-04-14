@@ -5,17 +5,17 @@ import { VendingMachineDetailsComponent } from '../vending-machine-details/vendi
 declare let L;
 const provider = new OpenStreetMapProvider();
 const searchControl = new GeoSearchControl({
-  provider: provider,
+  provider,
 });
 
 @Component({
-  selector: 'app-admin-panel',
-  templateUrl: './admin-panel.component.html',
-  styleUrls: ['./admin-panel.component.css']
+  selector: 'app-machines',
+  templateUrl: './machines.component.html',
+  styleUrls: ['./machines.component.css']
 })
-export class AdminPanelComponent implements OnInit {
+export class MachinesComponent implements OnInit {
 
-  private map : any;
+  private map: any;
   @ViewChild(VendingMachineDetailsComponent) child: VendingMachineDetailsComponent;
 
   constructor() { }
@@ -29,16 +29,15 @@ export class AdminPanelComponent implements OnInit {
 
     L.Icon.Default.imagePath = '../assets/leaflet/images/';
 
-    this.map.adjustMap = function() {
-      L.getMap().then(function(map) {
-          setTimeout(function() {
+    this.map.adjustMap = () => {
+      L.getMap().then((map) => {
+          setTimeout(() => {
               map.invalidateSize();
-              map._resetView(map.getCenter(), map.getZoom(), true);   
+              map._resetView(map.getCenter(), map.getZoom(), true);
           }, 200);
       });
     };
 
-    searchControl.ser
     searchControl.addTo(this.map);
 
   }
@@ -47,14 +46,15 @@ export class AdminPanelComponent implements OnInit {
     this.child.loadData($event.machineId);
     provider
       .search({query: $event.address})
-      .then(function(results) {
-        var result = results[0];
+      .then((results) => {
+        const result = results[0];
         searchControl.onSubmit({ query: $event.address, data: result });
       });
 
-    this.map.on('geosearch_showlocation', function (result) {
-        L.marker([result.x, result.y]).addTo(this.map)
+    this.map.on('geosearch_showlocation', function(result) {
+        L.marker([result.x, result.y]).addTo(this.map);
     });
   }
-
 }
+
+

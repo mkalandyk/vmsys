@@ -1,0 +1,30 @@
+<app-toolbar></app-toolbar>
+
+<mat-card>
+  <mat-card-header>Current orders:</mat-card-header>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="List by Product">
+        <mat-list>
+          <mat-list-item *ngFor="let order of orders">
+            <p style="font-size: 14px">Machine id: {{order.machineId}}</p>
+            <p style="font-size: 14px">Product id: {{order.productId}}</p>
+            <p style="font-size: 14px">Quantity id: {{order.quantity}}</p>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="List by Machines">
+        <mat-list>
+          <mat-list-item>
+            <p style="font-size: 14px">Item one</p>
+          </mat-list-item>
+          <mat-list-item>
+              <p style="font-size: 14px">Item two</p>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+    </mat-tab-group> 
+  </mat-card-content>
+</mat-card>
+
+<app-footer></app-footer>

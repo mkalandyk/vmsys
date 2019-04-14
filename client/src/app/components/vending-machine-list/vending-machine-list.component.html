@@ -5,6 +5,7 @@
       <mat-list>
         <mat-list-item *ngFor="let vendingMachine of vendingMachines">
           <h3 mat-line>{{vendingMachine.address}}</h3>
+          <img src="{{vendingMachine.icon}}" height="25px" alt="status" title="{{vendingMachine.statusMessage}}">
           <button class="header-button" mat-button (click)="onDetailsClick(vendingMachine)">Details</button>
         </mat-list-item>
       </mat-list>

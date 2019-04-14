@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { WrongCredentialsDialogComponent } from 'src/app/wrong-credentials-dialog/wrong-credentials-dialog.component';
+import { WrongCredentialsDialogComponent } from 'src/app/dialogs/wrong-credentials-dialog/wrong-credentials-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,12 @@ import { WrongCredentialsDialogComponent } from 'src/app/wrong-credentials-dialo
 export class UserService {
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private http: HttpClient,
-    private dialog: MatDialog) { 
+    private dialog: MatDialog) {
   }
 
-  login(username: string, password: string) { 
+  login(username: string, password: string) {
     var result : boolean;
     const req = this.http.post('//localhost:8080/login', {
       'username': username,
