@@ -4,13 +4,23 @@
   <mat-card-header>Current orders:</mat-card-header>
   <mat-card-content>
     <mat-tab-group>
-      <mat-tab label="List by Product">
+      <mat-tab label="List by Products">
         <mat-list>
-          <mat-list-item *ngFor="let order of orders">
-            <p style="font-size: 14px">Machine id: {{order.machineId}}</p>
-            <p style="font-size: 14px">Product id: {{order.productId}}</p>
-            <p style="font-size: 14px">Quantity id: {{order.quantity}}</p>
-          </mat-list-item>
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+              <ng-container matColumnDef="product">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Product name </th>
+                <td mat-cell *matCellDef="let order"> {{order.product.name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="totalQuantity">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Quantity </th>
+                <td mat-cell *matCellDef="let order"> {{order.totalQuantity}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr class="tablecontent" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table> 
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
         </mat-list>
       </mat-tab>
       <mat-tab label="List by Machines">

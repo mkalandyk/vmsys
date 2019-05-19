@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { VendingMachineDetailsComponent } from '../vending-machine-details/vending-machine-details.component';
+import { DetailsDialogComponent } from 'src/app/dialogs/details-dialog/details-dialog.component';
+import { MatDialog } from '@angular/material';
 
 declare let L;
 const provider = new OpenStreetMapProvider();
@@ -16,9 +18,10 @@ const searchControl = new GeoSearchControl({
 export class MachinesComponent implements OnInit {
 
   private map: any;
-  @ViewChild(VendingMachineDetailsComponent) child: VendingMachineDetailsComponent;
 
-  constructor() { }
+  constructor(
+    private detailsDialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.map = L.map('map').setView([50.03, 22.00], 13);
@@ -43,7 +46,6 @@ export class MachinesComponent implements OnInit {
   }
 
   addPinToMap($event) {
-    this.child.loadData($event.machineId);
     provider
       .search({query: $event.address})
       .then((results) => {
@@ -53,6 +55,16 @@ export class MachinesComponent implements OnInit {
 
     this.map.on('geosearch_showlocation', function(result) {
         L.marker([result.x, result.y]).addTo(this.map);
+    });
+  }
+
+  details($event) {
+    const dialogRef = this.detailsDialog.open(DetailsDialogComponent, {
+      height: 'calc(100vh - 400px)',
+      width: 'auto',
+      data: {
+        machineId: $event.machineId
+      }
     });
   }
 }

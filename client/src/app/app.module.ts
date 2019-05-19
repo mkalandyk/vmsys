@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatInputModule, MatToolbarModule, MatListModule,
-  MatProgressSpinnerModule, MatDialogModule, MatGridListModule, MatTabsModule } from '@angular/material';
+  MatProgressSpinnerModule, MatDialogModule, MatGridListModule, MatTabsModule,
+  MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule } from '@angular/forms';
 
@@ -21,6 +22,7 @@ import { MachinesComponent } from './components/machines/machines.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DetailsDialogComponent } from './dialogs/details-dialog/details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MachinesComponent,
     OrderListComponent,
     ToolbarComponent,
-    FooterComponent
+    FooterComponent,
+    DetailsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +48,12 @@ import { FooterComponent } from './components/footer/footer.component';
     MatInputModule,
     MatListModule,
     MatTabsModule,
+    MatTableModule,
     MatToolbarModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatSortModule,
     FormsModule,
     MatDialogModule,
     MatGridListModule,
@@ -56,6 +62,6 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   providers: [VendingMachineService, UserService],
   bootstrap: [AppComponent],
-  entryComponents: [WrongCredentialsDialogComponent, AboutDialogComponent]
+  entryComponents: [WrongCredentialsDialogComponent, AboutDialogComponent, DetailsDialogComponent]
 })
 export class AppModule { }

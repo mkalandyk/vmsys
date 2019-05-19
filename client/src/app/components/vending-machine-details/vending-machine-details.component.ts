@@ -8,19 +8,17 @@ import { VendingMachineService } from '../../modules/vending-machine/vending-mac
 })
 export class VendingMachineDetailsComponent implements OnInit {
 
-  @Input() id
+  @Input() id;
   vendingMachine: any;
 
   constructor(private vendingMachineService: VendingMachineService) { }
 
   ngOnInit() {
-    this.vendingMachineService.getMachineById(0).subscribe(data => {
-      this.vendingMachine = data});
   }
 
   loadData(id) {
     this.vendingMachineService.getMachineById(id).subscribe(data => {
-    this.vendingMachine = data});
+    this.vendingMachine = data; });
   }
 
 }

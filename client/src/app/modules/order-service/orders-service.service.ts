@@ -11,6 +11,6 @@ export class OrdersServiceService {
   }
 
   getAll(): Observable<any | null> {
-    return this.http.get('//localhost:8080/orderlist');
+    return this.http.get('//localhost:8080/orderlist/product_full');
   }
 }

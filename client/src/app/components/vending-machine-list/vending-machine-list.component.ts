@@ -15,11 +15,12 @@ declare let L;
 export class VendingMachineListComponent implements OnInit {
 
   @Output() addPin = new EventEmitter();
+  @Output() showDetails = new EventEmitter;
   vendingMachines: Array<any>;
 
   alive = true;
 
-  constructor(private vendingMachineService: VendingMachineService) { 
+  constructor(private vendingMachineService: VendingMachineService) {
     Observable.timer(0, 10000)
     .takeWhile(() => this.alive)
     .subscribe(() => {
@@ -83,6 +84,10 @@ export class VendingMachineListComponent implements OnInit {
   }
 
   onDetailsClick(address) {
+    this.showDetails.emit(address);
+  }
+
+  onListHover(address) {
     this.addPin.emit(address);
   }
 }

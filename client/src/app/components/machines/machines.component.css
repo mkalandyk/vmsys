@@ -32,8 +32,8 @@
 }
 
 #map { 
-    height: calc(100vh / 2);
-    width: calc(100vw / 2 - 50px);
+    height: calc(100vh / 2 - 100px);
+    width: calc(100vw - 35px);
  }
 
  .title-tem >::ng-deep .mat-figure{
