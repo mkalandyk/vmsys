@@ -1,40 +1,55 @@
 <app-toolbar></app-toolbar>
 
-<mat-card>
-  <mat-card-header>Current orders:</mat-card-header>
-  <mat-card-content>
-    <mat-tab-group>
-      <mat-tab label="List by Products">
-        <mat-list>
-          <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-              <ng-container matColumnDef="product">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Product name </th>
-                <td mat-cell *matCellDef="let order"> {{order.product.name}} </td>
-              </ng-container>
-              <ng-container matColumnDef="totalQuantity">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Quantity </th>
-                <td mat-cell *matCellDef="let order"> {{order.totalQuantity}} </td>
-              </ng-container>
-              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-              <tr class="tablecontent" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table> 
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-          </div>
-        </mat-list>
-      </mat-tab>
-      <mat-tab label="List by Machines">
-        <mat-list>
-          <mat-list-item>
-            <p style="font-size: 14px">Item one</p>
-          </mat-list-item>
-          <mat-list-item>
-              <p style="font-size: 14px">Item two</p>
-          </mat-list-item>
-        </mat-list>
-      </mat-tab>
-    </mat-tab-group> 
-  </mat-card-content>
-</mat-card>
+<div style="height:calc(100vh - 112px); position:relative">
+  <mat-card style="min-height:calc(100vh - 112px); position:relative">
+    <mat-card-header>Current orders:</mat-card-header>
+    <mat-card-content>
+      <mat-tab-group (selectedTabChange)="switchTab($event)">
+        <mat-tab label="List by Products">
+          <mat-list>
+            <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSourceP" matSort class="mat-elevation-z8">
+                <ng-container matColumnDef="product">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Product name </th>
+                  <td mat-cell *matCellDef="let order"> {{order.product.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="totalQuantity">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Quantity </th>
+                  <td mat-cell *matCellDef="let order"> {{order.totalQuantity}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsP; sticky: true"></tr>
+                <tr class="tablecontent" mat-row *matRowDef="let row; columns: displayedColumnsP;"></tr>
+              </table> 
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+          </mat-list>
+        </mat-tab>
+        <mat-tab label="List by Machines">
+            <mat-list>
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceM" matSort class="mat-elevation-z8">
+                  <ng-container matColumnDef="machineId">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine id </th>
+                    <td mat-cell *matCellDef="let order"> {{order.machine.machineId}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="machineAddress">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header> Machine address </th>
+                      <td mat-cell *matCellDef="let order"> {{order.machine.address}} </td>
+                    </ng-container>
+                  <ng-container matColumnDef="totalQuantity">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Quantity </th>
+                    <td mat-cell *matCellDef="let order"> {{order.totalQuantity}} </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsM; sticky: true"></tr>
+                  <tr class="tablecontent" mat-row *matRowDef="let row; columns: displayedColumnsM;"></tr>
+                </table> 
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+              </div>
+            </mat-list>
+          </mat-tab>
+      </mat-tab-group> 
+    </mat-card-content>
+  </mat-card>
+</div>
 
 <app-footer></app-footer>

@@ -23,6 +23,7 @@ import { OrderListComponent } from './components/order-list/order-list.component
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DetailsDialogComponent } from './dialogs/details-dialog/details-dialog.component';
+import { SuppliesComponent } from './components/supplies/supplies.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DetailsDialogComponent } from './dialogs/details-dialog/details-dialog.
     OrderListComponent,
     ToolbarComponent,
     FooterComponent,
-    DetailsDialogComponent
+    DetailsDialogComponent,
+    SuppliesComponent
   ],
   imports: [
     BrowserModule,

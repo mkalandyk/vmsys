@@ -3,9 +3,15 @@ import { OrdersServiceService } from 'src/app/modules/order-service/orders-servi
 import { Observable } from 'rxjs';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
-export interface TableElement {
+export interface TableElementP {
   product: object;
   machines: object;
+  totalQuantity: number;
+}
+
+export interface TableElementM {
+  machine: object;
+  products: object;
   totalQuantity: number;
 }
 
@@ -16,14 +22,18 @@ export interface TableElement {
 })
 export class OrderListComponent implements OnInit {
 
+  activeTab = 0;
   alive = true;
-  displayedColumns: string[] = ['product', 'totalQuantity'];
-  dataSource: MatTableDataSource<TableElement>;
+  displayedColumnsP: string[] = ['product', 'totalQuantity'];
+  dataSourceP: MatTableDataSource<TableElementP>;
+  displayedColumnsM: string[] = ['machineId', 'machineAddress', 'totalQuantity'];
+  dataSourceM: MatTableDataSource<TableElementM>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private orderListService: OrdersServiceService) {
+    this.activeTab = 0;
     Observable.timer(0, 10000)
       .takeWhile(() => this.alive)
       .subscribe(() => {
@@ -40,10 +50,23 @@ export class OrderListComponent implements OnInit {
   }
 
   getData() {
-    this.orderListService.getAll().subscribe(data => {
-      this.dataSource = new MatTableDataSource<TableElement>(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
+    if (this.activeTab === 0) {
+      this.orderListService.getAllP().subscribe(data => {
+        this.dataSourceP = new MatTableDataSource<TableElementP>(data);
+        this.dataSourceP.paginator = this.paginator;
+        this.dataSourceP.sort = this.sort;
+      });
+    } else {
+      this.orderListService.getAllM().subscribe(data => {
+        this.dataSourceM = new MatTableDataSource<TableElementM>(data);
+        this.dataSourceM.paginator = this.paginator;
+        this.dataSourceM.sort = this.sort;
+      });
+    }
+  }
+
+  switchTab($event) {
+    this.activeTab = $event.index;
+    this.getData();
   }
 }

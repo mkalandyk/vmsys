@@ -3,6 +3,7 @@
 @import './assets/leaflet/leaflet.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import 'https://unpkg.com/leaflet-geosearch@2.6.0/assets/css/leaflet.css';
+@import '../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css';
 
 
 

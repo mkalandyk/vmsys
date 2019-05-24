@@ -10,7 +10,11 @@ export class OrdersServiceService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<any | null> {
+  getAllP(): Observable<any | null> {
     return this.http.get('//localhost:8080/orderlist/product_full');
+  }
+
+  getAllM(): Observable<any | null> {
+    return this.http.get('//localhost:8080/orderlist/machine_full');
   }
 }

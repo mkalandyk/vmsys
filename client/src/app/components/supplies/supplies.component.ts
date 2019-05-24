@@ -1,0 +1,130 @@
+import { Component, OnInit } from '@angular/core';
+import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+import 'leaflet';
+import 'leaflet-routing-machine';
+import 'lrm-graphhopper';
+import { OrdersServiceService } from 'src/app/modules/order-service/orders-service.service';
+import { GraphhopperServiceService } from 'src/app/modules/graphhopper-service/graphhopper-service.service';
+
+declare let L;
+//require('leaflet-routing-machine');
+//require('lrm-graphhopper');
+
+const provider = new OpenStreetMapProvider();
+const searchControl = new GeoSearchControl({
+  provider,
+});
+let routingEngine;
+
+@Component({
+  selector: 'app-supplies',
+  templateUrl: './supplies.component.html',
+  styleUrls: ['./supplies.component.css']
+})
+export class SuppliesComponent implements OnInit {
+
+  private map: any;
+
+  constructor(
+    private orderListService: OrdersServiceService,
+    private graphhopperService: GraphhopperServiceService) { }
+
+  ngOnInit() {
+    this.map = L.map('map').setView([50.03, 22.00], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(this.map);
+
+    L.Icon.Default.imagePath = '../assets/leaflet/images/';
+
+    this.map.adjustMap = () => {
+      L.getMap().then((map) => {
+          setTimeout(() => {
+              map.invalidateSize();
+              map._resetView(map.getCenter(), map.getZoom(), true);
+          }, 200);
+      });
+    };
+
+    routingEngine = L.Routing.control({
+      waypoints: [ ],
+      routeWhileDragging: true,
+      showAlternatives: true,
+      router: L.Routing.graphHopper('8756735b-b600-4818-9dad-3b1b456601ef', {
+        serviceUrl: 'https://graphhopper.com/api/1/route'
+      })
+    });
+
+    routingEngine.addTo(this.map);
+
+    searchControl.addTo(this.map);
+
+    this.checkOrderList();
+  }
+
+  checkOrderList() {
+    this.orderListService.getAllM().subscribe(data => {
+      if (data.length > 0) {
+
+        const vehicles = [
+          {
+            vehicle_id: 'my_vehicle',
+            start_address: {
+              location_id: 'warehouse',
+              lon: 21.9811464759097,
+              lat: 50.0192665
+            }
+          }
+        ];
+
+        const services = [];
+
+        let counter = data.length;
+
+        data.forEach(e => {
+          provider
+            .search({ query: e.machine.address })
+            .then(result => {
+              services.push({
+                id: e.machine.address,
+                name: 'supply' + e.machine.address,
+                address: {
+                    location_id: e.machine.address,
+                    lon: Number(result[0].x),
+                    lat: Number(result[0].y)
+                }
+              });
+              counter--;
+              if (counter === 0) {
+                const optBodyReq = {vehicles, services};
+                this.graphhopperService.postForOptimization(optBodyReq).subscribe(jobID => {
+                  let processed = 0;
+                  this.delay(2500).then(() => {
+                    this.graphhopperService.getJobStatus(jobID.job_id).subscribe(response => {
+                      if (response.status === 'finished') {
+                        processed = 1;
+                      }
+                      if (processed === 1) {
+                        const waypoints = [];
+                        response.solution.routes[0].activities.forEach(activity => {
+                          waypoints.push(L.latLng(activity.address.lat, activity.address.lon));
+                        });
+                        routingEngine.setWaypoints(waypoints);
+                      }
+                    });
+                  });
+                });
+              }
+            });
+        });
+      }
+    });
+  }
+
+  async delay(ms: number) {
+    await new Promise(resolve => setTimeout(() => resolve(), ms)).then(() => console.log('fired'));
+}
+  /* TODO: Dodac warehouse!. A do tego przycisk
+          który bedzie sluzyl do "potwierdzenia" ze dostawa zostala wykonana -> update stanu maszyn*/
+}

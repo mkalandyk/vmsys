@@ -29,6 +29,8 @@
             ],
             "scripts": [
               "src/assets/leaflet/leaflet.js",
+              "/node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js",
+              "/node_modules/lrm-graphhopper/src/L.Routing.GraphHopper.js",
               "node_modules/jquery/dist/jquery.js"
             ],
             "es5BrowserSupport": true
@@ -90,7 +92,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "src/assets/leaflet/leaflet.js"
+              "src/assets/leaflet/leaflet.js",
+              "/node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js",
+              "/node_modules/lrm-graphhopper/src/L.Routing.GraphHopper.js"
             ],
             "assets": [
               "src/favicon.ico",
