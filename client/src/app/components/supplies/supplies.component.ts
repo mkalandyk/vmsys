@@ -5,10 +5,9 @@ import 'leaflet-routing-machine';
 import 'lrm-graphhopper';
 import { OrdersServiceService } from 'src/app/modules/order-service/orders-service.service';
 import { GraphhopperServiceService } from 'src/app/modules/graphhopper-service/graphhopper-service.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 declare let L;
-//require('leaflet-routing-machine');
-//require('lrm-graphhopper');
 
 const provider = new OpenStreetMapProvider();
 const searchControl = new GeoSearchControl({
@@ -27,7 +26,8 @@ export class SuppliesComponent implements OnInit {
 
   constructor(
     private orderListService: OrdersServiceService,
-    private graphhopperService: GraphhopperServiceService) { }
+    private graphhopperService: GraphhopperServiceService,
+    private router: Router) { }
 
   ngOnInit() {
     this.map = L.map('map').setView([50.03, 22.00], 13);
@@ -118,6 +118,15 @@ export class SuppliesComponent implements OnInit {
               }
             });
         });
+      }
+    });
+  }
+
+  completeSchedule() {
+    console.log('completing');
+    this.orderListService.completeSchedule().subscribe(res => {
+      if (res === true) {
+        this.router.navigate(['admin-panel']);
       }
     });
   }

@@ -2,3 +2,9 @@
     height: calc(100vh - 112px);
     width: calc(100vw);
  }
+
+ #btnStyle span3 leaflet-control{
+    padding-bottom: 40px;
+    height: 30px;
+    pointer-events: auto;
+ }

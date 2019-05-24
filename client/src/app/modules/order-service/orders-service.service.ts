@@ -17,4 +17,8 @@ export class OrdersServiceService {
   getAllM(): Observable<any | null> {
     return this.http.get('//localhost:8080/orderlist/machine_full');
   }
+
+  completeSchedule(): Observable<any | null> {
+    return this.http.post('//localhost:8080/orderlist/completeList', {complete: ''});
+  }
 }
