@@ -3,6 +3,8 @@ import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { VendingMachineDetailsComponent } from '../vending-machine-details/vending-machine-details.component';
 import { DetailsDialogComponent } from 'src/app/dialogs/details-dialog/details-dialog.component';
 import { MatDialog } from '@angular/material';
+import { EditDialogComponent } from 'src/app/dialogs/edit-dialog/edit-dialog.component';
+import { AddDialogComponent } from 'src/app/dialogs/add-dialog/add-dialog.component';
 
 declare let L;
 const provider = new OpenStreetMapProvider();
@@ -20,7 +22,9 @@ export class MachinesComponent implements OnInit {
   private map: any;
 
   constructor(
-    private detailsDialog: MatDialog
+    private detailsDialog: MatDialog,
+    private addDialog: MatDialog,
+    private editDialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -65,6 +69,23 @@ export class MachinesComponent implements OnInit {
       data: {
         machineId: $event.machineId
       }
+    });
+  }
+
+  editMachineContent($event) {
+    const dialogRef = this.editDialog.open(EditDialogComponent, {
+      height: 'calc(100vh - 400px)',
+      width: 'auto',
+      data: {
+        machineId: $event.machineId
+      }
+    });
+  }
+
+  addMachine() {
+    const dialogRef = this.addDialog.open(AddDialogComponent, {
+      height: 'calc(100vh - 400px)',
+      width: 'auto'
     });
   }
 }

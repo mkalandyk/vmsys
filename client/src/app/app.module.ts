@@ -24,6 +24,10 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DetailsDialogComponent } from './dialogs/details-dialog/details-dialog.component';
 import { SuppliesComponent } from './components/supplies/supplies.component';
+import { EditDialogComponent } from './dialogs/edit-dialog/edit-dialog.component';
+import { AddDialogComponent } from './dialogs/add-dialog/add-dialog.component';
+import { InlineEditComponentComponent } from './components/inline-edit-component/inline-edit-component.component';
+import { VendingMachineEditComponent } from './components/vending-machine-edit/vending-machine-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { SuppliesComponent } from './components/supplies/supplies.component';
     ToolbarComponent,
     FooterComponent,
     DetailsDialogComponent,
-    SuppliesComponent
+    SuppliesComponent,
+    EditDialogComponent,
+    AddDialogComponent,
+    InlineEditComponentComponent,
+    VendingMachineEditComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +72,12 @@ import { SuppliesComponent } from './components/supplies/supplies.component';
   ],
   providers: [VendingMachineService, UserService],
   bootstrap: [AppComponent],
-  entryComponents: [WrongCredentialsDialogComponent, AboutDialogComponent, DetailsDialogComponent]
+  entryComponents: [
+    WrongCredentialsDialogComponent,
+    AboutDialogComponent,
+    DetailsDialogComponent,
+    EditDialogComponent,
+    AddDialogComponent
+  ]
 })
 export class AppModule { }

@@ -133,7 +133,6 @@ export class SuppliesComponent implements OnInit {
 
   async delay(ms: number) {
     await new Promise(resolve => setTimeout(() => resolve(), ms)).then(() => console.log('fired'));
-}
-  /* TODO: Dodac warehouse!. A do tego przycisk
-          który bedzie sluzyl do "potwierdzenia" ze dostawa zostala wykonana -> update stanu maszyn*/
+  }
+
 }

@@ -1,13 +1,15 @@
 <mat-card class="detail">
-    <mat-card-header>Details:</mat-card-header>
+    <p style="margin-bottom: 15px; font-size: 18px;">Details:</p>
     <mat-card-content>
       <p>Machine id: {{vendingMachine.machineId}}</p>
       <p>Address: {{vendingMachine.address}}</p>
       <p>Machine content: </p>
-      <mat-list>
-        <mat-list-item *ngFor="let content of vendingMachine.machineContent">
-          <p style="font-size: 14px">{{content.product.name}}  quantity:   {{content.quantity}}</p>
-        </mat-list-item>
-      </mat-list>
+      <cdk-virtual-scroll-viewport itemSize="15px" style="min-height: 280px; box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);">
+        <mat-list>
+          <mat-list-item *ngFor="let content of vendingMachine.machineContent">
+            <p style="font-size: 14px">{{content.product.name}}  quantity:   {{content.quantity}}</p>
+          </mat-list-item>
+        </mat-list>
+      </cdk-virtual-scroll-viewport>
     </mat-card-content>
   </mat-card>

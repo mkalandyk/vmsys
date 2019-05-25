@@ -1,0 +1,18 @@
+<mat-card class="detail">
+    <p style="margin-bottom: 15px; font-size: 18px;">Details:</p>
+    <mat-card-content>
+      <p>Machine id: {{vendingMachine.machineId}}</p>
+      <p>Address:</p>
+      <app-inline-edit-component [(ngModel)]=vendingMachine.address type="text"></app-inline-edit-component>
+      <p style="margin-top: 14px">Machine content: </p>
+      <cdk-virtual-scroll-viewport itemSize="15px" style="min-height: 200px; box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);">
+        <mat-list>
+          <mat-list-item *ngFor="let content of vendingMachine.machineContent">
+            <p style="font-size: 14px; padding-top: 15px; margin-right: 20px;">{{content.product.name}}  quantity:   </p>
+            <app-inline-edit-component [(ngModel)]=content.quantity type="text"></app-inline-edit-component>
+          </mat-list-item>
+        </mat-list>
+      </cdk-virtual-scroll-viewport>
+      <button class="button" mat-button (click)="onSaveClicked()">Save</button>
+    </mat-card-content>
+  </mat-card>

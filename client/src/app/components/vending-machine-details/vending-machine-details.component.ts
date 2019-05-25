@@ -18,7 +18,8 @@ export class VendingMachineDetailsComponent implements OnInit {
 
   loadData(id) {
     this.vendingMachineService.getMachineById(id).subscribe(data => {
-    this.vendingMachine = data; });
+      this.vendingMachine = data;
+    });
   }
 
 }

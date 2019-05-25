@@ -15,7 +15,9 @@ declare let L;
 export class VendingMachineListComponent implements OnInit {
 
   @Output() addPin = new EventEmitter();
-  @Output() showDetails = new EventEmitter;
+  @Output() showDetails = new EventEmitter();
+  @Output() editMachine = new EventEmitter();
+  @Output() addMachine = new EventEmitter();
   vendingMachines: Array<any>;
 
   alive = true;
@@ -89,5 +91,13 @@ export class VendingMachineListComponent implements OnInit {
 
   onListHover(address) {
     this.addPin.emit(address);
+  }
+
+  onEditClick(address) {
+    this.editMachine.emit(address);
+  }
+
+  onAddClick() {
+    this.addMachine.emit();
   }
 }

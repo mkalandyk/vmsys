@@ -3,7 +3,7 @@
 <div style="height:calc(100vh - 120px); position:relative">
 <mat-grid-list cols="2" rowHeight="fit" style="height:calc(100vh - 120px)">
   <mat-grid-tile class="title-tem" [colspan]="2" [rowspan]="1" style="min-height: 300px; align-items: start;">
-    <app-vending-machine-list (showDetails)="details($event)" (addPin)="addPinToMap($event)" style="width:100vw;"></app-vending-machine-list>
+    <app-vending-machine-list (showDetails)="details($event)" (addPin)="addPinToMap($event)" (editMachine)="editMachineContent($event)" (addMachine)="addMachine()" style="width:100vw;"></app-vending-machine-list>
   </mat-grid-tile>
   <mat-grid-tile class="title-tem" [colspan]="2" [rowspan]="1">
     <mat-card style="min-height:auto">
