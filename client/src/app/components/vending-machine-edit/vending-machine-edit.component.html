@@ -2,9 +2,14 @@
     <p style="margin-bottom: 15px; font-size: 18px;">Details:</p>
     <mat-card-content>
       <p>Machine id: {{vendingMachine.machineId}}</p>
-      <p>Address:</p>
+      <p>
+        Address:
       <app-inline-edit-component [(ngModel)]=vendingMachine.address type="text"></app-inline-edit-component>
-      <p style="margin-top: 14px">Machine content: </p>
+      </p>
+      <p style="margin-top: 14px">
+        Machine content:
+        <button class="button-nomrg" mat-button (click)="onAddClicked()">Add</button> 
+      </p>
       <cdk-virtual-scroll-viewport itemSize="15px" style="min-height: 200px; box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);">
         <mat-list>
           <mat-list-item *ngFor="let content of vendingMachine.machineContent">

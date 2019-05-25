@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+    align-content: center;
+}
+
+.tablecontent:hover{
+    background-color: gray;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+  }

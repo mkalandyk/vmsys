@@ -74,7 +74,7 @@ export class MachinesComponent implements OnInit {
 
   editMachineContent($event) {
     const dialogRef = this.editDialog.open(EditDialogComponent, {
-      height: 'calc(100vh - 400px)',
+      height: 'calc(100vh - 375px)',
       width: 'auto',
       data: {
         machineId: $event.machineId
@@ -84,7 +84,7 @@ export class MachinesComponent implements OnInit {
 
   addMachine() {
     const dialogRef = this.addDialog.open(AddDialogComponent, {
-      height: 'calc(100vh - 400px)',
+      height: 'calc(100vh - 325px)',
       width: 'auto'
     });
   }

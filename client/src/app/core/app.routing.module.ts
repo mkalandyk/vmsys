@@ -6,10 +6,11 @@ import { AdminPanelComponent } from '../components/admin-panel/admin-panel.compo
 import { MachinesComponent } from '../components/machines/machines.component';
 import { OrderListComponent } from '../components/order-list/order-list.component';
 import { SuppliesComponent } from '../components/supplies/supplies.component';
+import { WarehouseComponent } from '../components/warehouse/warehouse.component';
 
 const routes: Routes = [
     { path: 'machines', component: MachinesComponent},
-    { path: 'warehouses', component: MachinesComponent},
+    { path: 'warehouses', component: WarehouseComponent},
     { path: 'order-list', component: OrderListComponent},
     { path: 'supply-schedule', component: SuppliesComponent},
     { path: 'admin-panel', component: AdminPanelComponent},

@@ -1,10 +1,15 @@
 .detail {
     min-height: calc(100vh / 2); 
-    height: calc(100vh / 2);
+    height: calc(100vh / 2 + 20px);
     width: calc(100vw / 2 - 50px);
 }
 
 .button {
     margin-left: 20px;
     margin-top: 20px;
+}
+
+.button-nomrgn {
+    margin-left: 20px;
+    margin-top: 0px;
 }

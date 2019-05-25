@@ -28,6 +28,7 @@ import { EditDialogComponent } from './dialogs/edit-dialog/edit-dialog.component
 import { AddDialogComponent } from './dialogs/add-dialog/add-dialog.component';
 import { InlineEditComponentComponent } from './components/inline-edit-component/inline-edit-component.component';
 import { VendingMachineEditComponent } from './components/vending-machine-edit/vending-machine-edit.component';
+import { WarehouseComponent } from './components/warehouse/warehouse.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { VendingMachineEditComponent } from './components/vending-machine-edit/v
     EditDialogComponent,
     AddDialogComponent,
     InlineEditComponentComponent,
-    VendingMachineEditComponent
+    VendingMachineEditComponent,
+    WarehouseComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import 'lrm-graphhopper';
 import { OrdersServiceService } from 'src/app/modules/order-service/orders-service.service';
 import { GraphhopperServiceService } from 'src/app/modules/graphhopper-service/graphhopper-service.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { WarehouseServiceService } from 'src/app/modules/warehouse-service/warehouse-service.service';
 
 declare let L;
 
@@ -27,6 +28,7 @@ export class SuppliesComponent implements OnInit {
   constructor(
     private orderListService: OrdersServiceService,
     private graphhopperService: GraphhopperServiceService,
+    private warehouseService: WarehouseServiceService,
     private router: Router) { }
 
   ngOnInit() {
@@ -72,11 +74,20 @@ export class SuppliesComponent implements OnInit {
             vehicle_id: 'my_vehicle',
             start_address: {
               location_id: 'warehouse',
-              lon: 21.9811464759097,
-              lat: 50.0192665
+              lon: 0,
+              lat: 0
             }
           }
         ];
+
+        this.warehouseService.getAll().subscribe(warehouse => {
+          provider
+            .search({ query: warehouse.address })
+            .then(result => {
+              vehicles[0].start_address.lon = Number(result[0].x);
+              vehicles[0].start_address.lat = Number(result[0].y);
+          });
+        });
 
         const services = [];
 

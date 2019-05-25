@@ -40,4 +40,13 @@ export class VendingMachineEditComponent implements OnInit {
       }
     });
   }
+
+  onAddClicked() {
+    this.vendingMachine.machineContent
+    this.vendingMachineService.updateMachine(this.vendingMachine).subscribe(data => {
+      if (data === true) {
+        this.router.navigate(['admin-panel']);
+      }
+    });
+  }
 }
