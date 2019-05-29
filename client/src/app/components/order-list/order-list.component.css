@@ -9,4 +9,13 @@ table {
 
 th.mat-sort-header-sorted {
     color: black;
-  }
+}
+
+::ng-deep .mat-sort-header-container {
+    display:flex;
+    justify-content: left;
+}
+
+::ng-deep .mat-cell {
+    text-align: left;
+}

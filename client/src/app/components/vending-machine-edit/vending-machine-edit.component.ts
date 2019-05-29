@@ -1,6 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { VendingMachineService } from 'src/app/modules/vending-machine/vending-machine.service';
 import { Router } from '@angular/router';
+import { MatTableDataSource, MatSort } from '@angular/material';
+import { WarehouseServiceService } from 'src/app/modules/warehouse-service/warehouse-service.service';
+
+export interface TableElement {
+  product: object;
+  quantity: number;
+  vendingMachineId: number;
+}
 
 @Component({
   selector: 'app-vending-machine-edit',
@@ -11,9 +19,14 @@ export class VendingMachineEditComponent implements OnInit {
 
   @Input() id;
   vendingMachine: any;
+  displayedColumns: string[] = ['productId', 'name', 'quantity', 'update'];
+  dataSource: MatTableDataSource<TableElement>;
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private vendingMachineService: VendingMachineService,
+    private warehouseService: WarehouseServiceService,
     private router: Router
   ) { }
 
@@ -23,7 +36,8 @@ export class VendingMachineEditComponent implements OnInit {
   loadData(id) {
     this.vendingMachineService.getMachineById(id).subscribe(data => {
       this.vendingMachine = data;
-      console.log(data);
+      this.dataSource = new MatTableDataSource<TableElement>(data.machineContent);
+      this.dataSource.sort = this.sort;
     });
   }
 
@@ -41,12 +55,19 @@ export class VendingMachineEditComponent implements OnInit {
     });
   }
 
+  onRowSaveClicked(product) {
+    // TODO: update only row state
+  }
+
+  onRowRemoveClicked(content) {
+    this.vendingMachine.machineContent.splice(this.vendingMachine.machineContent.indexOf(content), 1);
+    this.dataSource = new MatTableDataSource<TableElement>(this.vendingMachine.machineContent);
+    this.dataSource.sort = this.sort;
+  }
+
   onAddClicked() {
-    this.vendingMachine.machineContent
-    this.vendingMachineService.updateMachine(this.vendingMachine).subscribe(data => {
-      if (data === true) {
-        this.router.navigate(['admin-panel']);
-      }
-    });
+    const content = {product: {}, quantity: 0, vendingMachineId: this.vendingMachine.vendingMachineId};
+    this.vendingMachine.machineContent.push(content);
+    this.dataSource = new MatTableDataSource<TableElement>(this.vendingMachine.machineContent);
   }
 }

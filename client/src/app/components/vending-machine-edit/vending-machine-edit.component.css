@@ -1,6 +1,6 @@
 .detail {
-    min-height: calc(100vh / 2); 
-    height: calc(100vh / 2 + 20px);
+    min-height: calc(100vh / 2 + 100px); 
+    height: calc(100vh / 2 + 100px);
     width: calc(100vw / 2 - 50px);
 }
 
@@ -12,4 +12,18 @@
 .button-nomrgn {
     margin-left: 20px;
     margin-top: 0px;
+}
+
+table.mat-table {
+    border-spacing: 0;
+    width: 100%;
+}
+
+::ng-deep .mat-sort-header-container {
+    display:flex;
+    justify-content:center;
+}
+
+::ng-deep .mat-cell {
+    text-align: center;
 }
