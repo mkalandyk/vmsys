@@ -6,7 +6,7 @@
   <mat-card-content style="padding-left: 25px; padding-right: 25px">
     <cdk-virtual-scroll-viewport itemSize="15px" style="min-height: 250px; box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);">
       <mat-list>
-        <mat-list-item class="vm-list-element" *ngFor="let vendingMachine of vendingMachines" (mouseenter)="onListHover(vendingMachine)">
+        <mat-list-item class="vm-list-element" *ngFor="let vendingMachine of vendingMachines" (click)="onListHover(vendingMachine)">
           <h3 mat-line>{{vendingMachine.address}}</h3>
           <img src="{{vendingMachine.icon}}" height="25px" alt="status" title="{{vendingMachine.statusMessage}}">
           <button class="header-button" mat-button (click)="onDetailsClick(vendingMachine)">Details</button>

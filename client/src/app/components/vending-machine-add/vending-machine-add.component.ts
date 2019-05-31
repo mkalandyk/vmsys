@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { VendingMachineService } from 'src/app/modules/vending-machine/vending-machine.service';
-import { Router } from '@angular/router';
 import { MatTableDataSource, MatSort } from '@angular/material';
+import { VendingMachineService } from 'src/app/modules/vending-machine/vending-machine.service';
 import { ProductServiceService } from 'src/app/modules/product-service/product-service.service';
+import { Router } from '@angular/router';
 
 export interface TableElement {
   product: object;
@@ -11,13 +11,13 @@ export interface TableElement {
 }
 
 @Component({
-  selector: 'app-vending-machine-edit',
-  templateUrl: './vending-machine-edit.component.html',
-  styleUrls: ['./vending-machine-edit.component.css']
+  selector: 'app-vending-machine-add',
+  templateUrl: './vending-machine-add.component.html',
+  styleUrls: ['./vending-machine-add.component.css']
 })
-export class VendingMachineEditComponent implements OnInit {
+export class VendingMachineAddComponent implements OnInit {
 
-  @Input() id;
+  id: any;
   vendingMachine: any;
   productsList: any;
   productsListFull: any;
@@ -33,29 +33,24 @@ export class VendingMachineEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-
-  loadData(id) {
-    this.productService.getAll().subscribe(data => {
-      this.productsList = [];
-      this.productsListFull = data;
-      const listofUsedProducts = [];
-      this.vendingMachineService.getMachineById(id).subscribe(machineData => {
-        this.vendingMachine = machineData;
-        this.dataSource = new MatTableDataSource<TableElement>(machineData.machineContent);
+    this.productService.getAll().subscribe(prodData => {
+      this.productsList = prodData;
+      this.productsListFull = prodData;
+      this.vendingMachineService.getLastId().subscribe(data => {
+        this.id = data + 1;
+        this.vendingMachine = {
+          machineId : this.id,
+          address : 'Address',
+          machineContent : [{product: {}, quantity: 0, vendingMachineId: this.id}],
+          billon_10 : 10,
+          billon_20 : 10,
+          billon_50 : 10,
+          billon_1 : 10,
+          billon_2 : 10,
+          billon_5 : 10,
+        };
+        this.dataSource = new MatTableDataSource<TableElement>(this.vendingMachine.machineContent);
         this.dataSource.sort = this.sort;
-        this.vendingMachine.machineContent.forEach(element => {
-          this.productsListFull.forEach(prod => {
-            if (prod.name === element.product.name) {
-              listofUsedProducts.push(prod);
-            }
-          });
-        });
-        this.productsListFull.forEach(element => {
-          if (!listofUsedProducts.includes(element)) {
-            this.productsList.push(element);
-          }
-        });
       });
     });
   }
@@ -122,4 +117,5 @@ export class VendingMachineEditComponent implements OnInit {
     }
     return true;
   }
+
 }

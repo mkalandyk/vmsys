@@ -21,4 +21,8 @@ export class VendingMachineService {
   updateMachine(vendingmachine): Observable<any | null> {
     return this.http.post('//localhost:8080/vendingmachines/' + vendingmachine.machineId, vendingmachine);
   }
+
+  getLastId(): Observable<any | null> {
+    return this.http.get('//localhost:8080/vendingmachines/last');
+  }
 }

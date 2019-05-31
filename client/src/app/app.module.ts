@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatInputModule, MatToolbarModule, MatListModule,
   MatProgressSpinnerModule, MatDialogModule, MatGridListModule, MatTabsModule,
-  MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+  MatTableModule, MatPaginatorModule, MatSortModule, MatSelect, MatSelectModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule } from '@angular/forms';
 
@@ -29,6 +29,7 @@ import { AddDialogComponent } from './dialogs/add-dialog/add-dialog.component';
 import { InlineEditComponentComponent } from './components/inline-edit-component/inline-edit-component.component';
 import { VendingMachineEditComponent } from './components/vending-machine-edit/vending-machine-edit.component';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
+import { VendingMachineAddComponent } from './components/vending-machine-add/vending-machine-add.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { WarehouseComponent } from './components/warehouse/warehouse.component';
     AddDialogComponent,
     InlineEditComponentComponent,
     VendingMachineEditComponent,
-    WarehouseComponent
+    WarehouseComponent,
+    VendingMachineAddComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +71,7 @@ import { WarehouseComponent } from './components/warehouse/warehouse.component';
     FormsModule,
     MatDialogModule,
     MatGridListModule,
+    MatSelectModule,
     ScrollingModule,
     AppRoutingModule
   ],

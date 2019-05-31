@@ -29,7 +29,8 @@ export class OrderListComponent implements OnInit {
   displayedColumnsM: string[] = ['machineId', 'machineAddress', 'totalQuantity'];
   dataSourceM: MatTableDataSource<TableElementM>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('paginatorM') paginatorM: MatPaginator;
+  @ViewChild('paginatorP') paginatorP: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private orderListService: OrdersServiceService) {
@@ -53,13 +54,13 @@ export class OrderListComponent implements OnInit {
     if (this.activeTab === 0) {
       this.orderListService.getAllP().subscribe(data => {
         this.dataSourceP = new MatTableDataSource<TableElementP>(data);
-        this.dataSourceP.paginator = this.paginator;
+        this.dataSourceP.paginator = this.paginatorP;
         this.dataSourceP.sort = this.sort;
       });
     } else {
       this.orderListService.getAllM().subscribe(data => {
         this.dataSourceM = new MatTableDataSource<TableElementM>(data);
-        this.dataSourceM.paginator = this.paginator;
+        this.dataSourceM.paginator = this.paginatorM;
         this.dataSourceM.sort = this.sort;
       });
     }

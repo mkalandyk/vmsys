@@ -20,7 +20,7 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsP; sticky: true"></tr>
                 <tr class="tablecontent" mat-row *matRowDef="let row; columns: displayedColumnsP;"></tr>
               </table> 
-              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+              <mat-paginator #paginatorP [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
             </div>
           </mat-list>
         </mat-tab>
@@ -43,7 +43,7 @@
                   <tr mat-header-row *matHeaderRowDef="displayedColumnsM; sticky: true"></tr>
                   <tr class="tablecontent" mat-row *matRowDef="let row; columns: displayedColumnsM;"></tr>
                 </table> 
-                <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+                <mat-paginator #paginatorM [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
               </div>
             </mat-list>
           </mat-tab>
