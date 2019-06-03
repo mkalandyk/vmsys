@@ -5,6 +5,7 @@ import { WarehouseServiceService } from 'src/app/modules/warehouse-service/wareh
 import { DataSource } from '@angular/cdk/table';
 import { BehaviorSubject, Observable, merge, Subject } from 'rxjs';
 import { map } from 'leaflet';
+import { Router } from '@angular/router';
 
 export interface TableElement {
   productId: number;
@@ -33,7 +34,8 @@ export class WarehouseComponent implements OnInit {
   constructor(
     private productService: ProductServiceService,
     private warehouseService: WarehouseServiceService,
-    private changeDetectorRefs: ChangeDetectorRef) {
+    private changeDetectorRefs: ChangeDetectorRef,
+    private router: Router) {
       Observable.timer(0, 1000)
       .takeWhile(() => this.alive)
       .subscribe(() => {
@@ -44,6 +46,9 @@ export class WarehouseComponent implements OnInit {
      }
 
   ngOnInit() {
+    if (JSON.parse(localStorage.getItem('user')) === null ) {
+      this.router.navigate(['forbidden']);
+    }
     this.getData();
   }
 

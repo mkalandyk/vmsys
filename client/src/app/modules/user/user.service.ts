@@ -16,24 +16,27 @@ export class UserService {
   }
 
   login(username: string, password: string) {
-    var result : boolean;
+    let result : boolean;
     const req = this.http.post('//localhost:8080/login', {
       'username': username,
       'password': password
     })
     .subscribe(
       res => {
-        if(res != null) {
-          var user = JSON.parse(JSON.stringify(res));
-          if(user.username == username) {
-            this.router.navigate(["admin-panel"]);
+        if (res != null) {
+          const user = JSON.parse(JSON.stringify(res));
+          if (user.username === username) {
+            localStorage.setItem('user', JSON.stringify(user));
+            this.router.navigate(['admin-panel']);
           } else {
+            localStorage.removeItem('user');
             const dialogRef = this.dialog.open(WrongCredentialsDialogComponent, {
               height: '150px',
               width: '200px',
             });
           }
         } else {
+          localStorage.removeItem('user');
           const dialogRef = this.dialog.open(WrongCredentialsDialogComponent, {
             height: '150px',
             width: '200px',
@@ -41,6 +44,7 @@ export class UserService {
         }
       },
       err => {
+        localStorage.removeItem('user');
         const dialogRef = this.dialog.open(WrongCredentialsDialogComponent, {
           height: '150px',
           width: '200px',
@@ -48,6 +52,6 @@ export class UserService {
       }
     );
     return result;
-  };
+  }
 
 }

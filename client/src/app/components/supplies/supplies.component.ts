@@ -32,6 +32,10 @@ export class SuppliesComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    if (JSON.parse(localStorage.getItem('user')) === null ) {
+      this.router.navigate(['forbidden']);
+    }
+
     this.map = L.map('map').setView([50.03, 22.00], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

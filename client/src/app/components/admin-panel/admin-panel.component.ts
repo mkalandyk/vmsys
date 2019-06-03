@@ -13,6 +13,9 @@ export class AdminPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (JSON.parse(localStorage.getItem('user')) === null ) {
+      this.router.navigate(['forbidden']);
+    }
   }
 
   menuPick(id) {

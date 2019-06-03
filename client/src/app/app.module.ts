@@ -30,6 +30,7 @@ import { InlineEditComponentComponent } from './components/inline-edit-component
 import { VendingMachineEditComponent } from './components/vending-machine-edit/vending-machine-edit.component';
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
 import { VendingMachineAddComponent } from './components/vending-machine-add/vending-machine-add.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { VendingMachineAddComponent } from './components/vending-machine-add/ven
     InlineEditComponentComponent,
     VendingMachineEditComponent,
     WarehouseComponent,
-    VendingMachineAddComponent
+    VendingMachineAddComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,

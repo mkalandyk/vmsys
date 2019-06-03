@@ -5,6 +5,7 @@ import { DetailsDialogComponent } from 'src/app/dialogs/details-dialog/details-d
 import { MatDialog } from '@angular/material';
 import { EditDialogComponent } from 'src/app/dialogs/edit-dialog/edit-dialog.component';
 import { AddDialogComponent } from 'src/app/dialogs/add-dialog/add-dialog.component';
+import { Router } from '@angular/router';
 
 declare let L;
 const provider = new OpenStreetMapProvider();
@@ -24,10 +25,15 @@ export class MachinesComponent implements OnInit {
   constructor(
     private detailsDialog: MatDialog,
     private addDialog: MatDialog,
-    private editDialog: MatDialog
+    private editDialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    if (JSON.parse(localStorage.getItem('user')) === null ) {
+      this.router.navigate(['forbidden']);
+    }
+
     this.map = L.map('map').setView([50.03, 22.00], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrdersServiceService } from 'src/app/modules/order-service/orders-service.service';
 import { Observable } from 'rxjs';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import { Router } from '@angular/router';
 
 export interface TableElementP {
   product: object;
@@ -33,7 +34,9 @@ export class OrderListComponent implements OnInit {
   @ViewChild('paginatorP') paginatorP: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private orderListService: OrdersServiceService) {
+  constructor(
+    private orderListService: OrdersServiceService,
+    private router: Router) {
     this.activeTab = 0;
     Observable.timer(0, 10000)
       .takeWhile(() => this.alive)
@@ -43,6 +46,9 @@ export class OrderListComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (JSON.parse(localStorage.getItem('user')) === null ) {
+      this.router.navigate(['forbidden']);
+    }
     this.getData();
   }
 

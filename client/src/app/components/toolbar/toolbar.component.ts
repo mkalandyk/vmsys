@@ -16,6 +16,9 @@ export class ToolbarComponent implements OnInit {
   }
 
   menuPick(id) {
+    if (id === 'login') {
+      localStorage.removeItem('user');
+    }
     this.router.navigate([id]);
   }
 }
