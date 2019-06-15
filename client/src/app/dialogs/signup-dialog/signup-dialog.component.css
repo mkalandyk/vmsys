@@ -1,0 +1,24 @@
+.element {
+    display: flex;
+    justify-content: left; 
+}
+
+.edit-field {
+    margin-left: 25px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.par {
+    font-size: 22px;
+}

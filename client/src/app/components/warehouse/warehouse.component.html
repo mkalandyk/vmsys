@@ -4,8 +4,9 @@
   <mat-card style="min-height:calc(100vh - 112px); position:relative">
     <mat-card-header>
       Address:   
-      <app-inline-edit-component style="margin-left: 50px;" [(ngModel)]=address type="text"></app-inline-edit-component>
-      <button class="button" style="margin-left: 50px; margin-top: -5px" mat-button (click)="onAddressSaveClicked()">Save</button>
+      <app-inline-edit-component [hidden]="!admin" style="margin-left: 50px;" [(ngModel)]=address type="text"></app-inline-edit-component>
+      <p [hidden]="admin" style="margin-left: 50px;">{{address}}</p>
+      <button [hidden]="!admin" class="button" style="margin-left: 50px; margin-top: -5px" mat-button (click)="onAddressSaveClicked()">Save</button>
     </mat-card-header>
   
     <mat-card-header>

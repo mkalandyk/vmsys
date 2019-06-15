@@ -19,6 +19,7 @@ export class VendingMachineListComponent implements OnInit {
   @Output() editMachine = new EventEmitter();
   @Output() addMachine = new EventEmitter();
   vendingMachines: Array<any>;
+  admin: boolean;
 
   alive = true;
 
@@ -31,6 +32,7 @@ export class VendingMachineListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.admin = JSON.parse(localStorage.getItem('user')).role === 'admin';
     this.getData();
   }
 

@@ -31,6 +31,9 @@ import { VendingMachineEditComponent } from './components/vending-machine-edit/v
 import { WarehouseComponent } from './components/warehouse/warehouse.component';
 import { VendingMachineAddComponent } from './components/vending-machine-add/vending-machine-add.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { AccountDialogComponent } from './dialogs/account-dialog/account-dialog.component';
+import { SignupDialogComponent } from './dialogs/signup-dialog/signup-dialog.component';
+import { ToasterModule, ToasterService, ToasterConfig, ToastComponent, ToasterContainerComponent } from 'angular2-toaster';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
     VendingMachineEditComponent,
     WarehouseComponent,
     VendingMachineAddComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    AccountDialogComponent,
+    SignupDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +80,8 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
     MatGridListModule,
     MatSelectModule,
     ScrollingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToasterModule.forRoot()
   ],
   providers: [VendingMachineService, UserService],
   bootstrap: [AppComponent],
@@ -84,7 +90,9 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
     AboutDialogComponent,
     DetailsDialogComponent,
     EditDialogComponent,
-    AddDialogComponent
+    AddDialogComponent,
+    AccountDialogComponent,
+    SignupDialogComponent
   ]
 })
 export class AppModule { }

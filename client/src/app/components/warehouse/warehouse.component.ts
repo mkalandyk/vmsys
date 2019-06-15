@@ -23,6 +23,7 @@ export class WarehouseComponent implements OnInit {
   activeTab = 0;
   displayedColumns: string[] = ['productId', 'name', 'price', 'update'];
   dataSource: MatTableDataSource<TableElement>;
+  admin: boolean;
   address;
   needRefresh = false;
   dataCopy = [];
@@ -49,6 +50,7 @@ export class WarehouseComponent implements OnInit {
     if (JSON.parse(localStorage.getItem('user')) === null ) {
       this.router.navigate(['forbidden']);
     }
+    this.admin = JSON.parse(localStorage.getItem('user')).role === 'admin';
     this.getData();
   }
 

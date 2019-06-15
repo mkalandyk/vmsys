@@ -50,3 +50,7 @@
     flex: 1 1 auto;
     text-align: center;
 }
+
+.sign-up-link {
+    font-size: 12px;
+}

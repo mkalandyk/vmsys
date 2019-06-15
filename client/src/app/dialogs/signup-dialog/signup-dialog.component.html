@@ -1,0 +1,19 @@
+<div mat-dialog-content class="header">
+  <p class="par">Enter new user data</p>
+</div>
+<div class="element">
+  <p>Username: </p> 
+  <app-inline-edit-component class="edit-field" [(ngModel)]=user.username type="text"></app-inline-edit-component>
+</div>
+  <div class="element">
+  <p>Password: </p> 
+  <app-inline-edit-component class="edit-field" [(ngModel)]=user.password type="text"></app-inline-edit-component>
+</div>
+<div class="element">
+  <p>E-mail: </p> 
+  <app-inline-edit-component class="edit-field" [(ngModel)]=user.email type="text"></app-inline-edit-component>
+</div>
+<div mat-dialog-actions class="buttons-container">
+  <button mat-raised-button color="primary" (click)="onSubmitClick()">Submit</button> 
+  <button mat-raised-button color="primary" (click)="onCancelClick()">Cancel</button>
+</div>

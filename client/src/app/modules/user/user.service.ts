@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { WrongCredentialsDialogComponent } from 'src/app/dialogs/wrong-credentials-dialog/wrong-credentials-dialog.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -54,4 +55,20 @@ export class UserService {
     return result;
   }
 
+  modifyUserdata(user: any) {
+    const req = this.http.post('//localhost:8080/account/update', user).subscribe( res => {
+      if (res === true) {
+        localStorage.removeItem('user');
+        localStorage.setItem('user', JSON.stringify(user));
+      }
+      return res;
+    });
+  }
+
+  registerNewUser(user: any): Observable<object> {
+    return this.http.post('//localhost:8080/account/create', user);
+    // const req = this.http.post('//localhost:8080/account/create', user).subscribe( res => {
+    //   return res;
+    // });
+  }
 }

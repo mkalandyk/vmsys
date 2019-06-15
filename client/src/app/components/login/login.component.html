@@ -36,4 +36,6 @@
   <mat-card-actions>
     <button mat-raised-button (click)="login()" color="primary">Login</button>
   </mat-card-actions>
+  <p class="sign-up-link">Don't have an account? <a class="sign-up-link" [routerLink]="" (click)="signUp()">Create a new one.</a></p>
 </mat-card>
+<toaster-container [toasterconfig]="config"></toaster-container>
