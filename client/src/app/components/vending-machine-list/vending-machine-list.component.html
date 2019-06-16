@@ -1,7 +1,7 @@
 <mat-card style="min-height:auto; align-items: start">
   <mat-card-header>
     <p style="font-size: 20px; margin-bottom: 15px; width: 100%">Available machines:</p>
-    <button [hidden]="!admin" style="margin-right: 25px" class="header-button" mat-button (click)="onAddClick(vendingMachine)">Add</button>
+    <button [hidden]="!admin" style="margin-right: 25px" class="header-button" mat-button (click)="onAddClick()">Add</button>
   </mat-card-header>
   <mat-card-content style="padding-left: 25px; padding-right: 25px">
     <cdk-virtual-scroll-viewport itemSize="15px" style="min-height: 250px; box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);">

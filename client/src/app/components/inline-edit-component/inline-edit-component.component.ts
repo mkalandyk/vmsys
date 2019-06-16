@@ -19,7 +19,7 @@ export class InlineEditComponentComponent implements ControlValueAccessor {
   @Input() required = true;
   private _value = '';
   private preValue = '';
-  private editing = false;
+  public editing = false;
   public onChange: any = Function.prototype;
   public onTouched: any = Function.prototype;
 

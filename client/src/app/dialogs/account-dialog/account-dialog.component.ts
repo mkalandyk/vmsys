@@ -9,7 +9,7 @@ import { UserService } from 'src/app/modules/user/user.service';
 })
 export class AccountDialogComponent {
 
-  private user: any;
+  public user: any;
 
   constructor(
     private dialogRef: MatDialogRef<AccountDialogComponent>,
