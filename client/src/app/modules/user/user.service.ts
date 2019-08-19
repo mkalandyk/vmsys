@@ -66,7 +66,7 @@ export class UserService {
   }
 
   registerNewUser(user: any): Observable<any> {
-    return this.http.post('https://vmsys-api.herokuapp.comaccount/create', user);
+    return this.http.post('https://vmsys-api.herokuapp.com/account/create', user);
     // const req = this.http.post('//localhost:8080/account/create', user).subscribe( res => {
     //   return res;
     // });
