@@ -11,18 +11,18 @@ export class VendingMachineService {
   }
 
   getAll(): Observable<any | null> {
-    return this.http.get('//localhost:8080/vendingmachines');
+    return this.http.get('https://vmsys-api.herokuapp.com/vendingmachines');
   }
 
   getMachineById(id): Observable<any | null> {
-    return this.http.get('//localhost:8080/vendingmachines/' + id);
+    return this.http.get('https://vmsys-api.herokuapp.com/vendingmachines/' + id);
   }
 
   updateMachine(vendingmachine): Observable<any | null> {
-    return this.http.post('//localhost:8080/vendingmachines/' + vendingmachine.machineId, vendingmachine);
+    return this.http.post('https://vmsys-api.herokuapp.com/vendingmachines/' + vendingmachine.machineId, vendingmachine);
   }
 
   getLastId(): Observable<any | null> {
-    return this.http.get('//localhost:8080/vendingmachines/last');
+    return this.http.get('https://vmsys-api.herokuapp.com/vendingmachines/last');
   }
 }

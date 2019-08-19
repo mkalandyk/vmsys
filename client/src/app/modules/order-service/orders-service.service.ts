@@ -11,14 +11,14 @@ export class OrdersServiceService {
   }
 
   getAllP(): Observable<any | null> {
-    return this.http.get('//localhost:8080/orderlist/product_full');
+    return this.http.get('https://vmsys-api.herokuapp.com/orderlist/product_full');
   }
 
   getAllM(): Observable<any | null> {
-    return this.http.get('//localhost:8080/orderlist/machine_full');
+    return this.http.get('https://vmsys-api.herokuapp.com/orderlist/machine_full');
   }
 
   completeSchedule(): Observable<any | null> {
-    return this.http.post('//localhost:8080/orderlist/completeList', {complete: ''});
+    return this.http.post('https://vmsys-api.herokuapp.com/orderlist/completeList', {complete: ''});
   }
 }

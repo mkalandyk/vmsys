@@ -10,11 +10,11 @@ export class WarehouseServiceService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any | null> {
-    return this.http.get('//localhost:8080/warehouse');
+    return this.http.get('https://vmsys-api.herokuapp.com/warehouse');
   }
 
   updateAddress(address): Observable<any | null> {
     console.log('updating');
-    return this.http.post('//localhost:8080/warehouse/update', address);
+    return this.http.post('https://vmsys-api.herokuapp.com/warehouse/update', address);
   }
 }

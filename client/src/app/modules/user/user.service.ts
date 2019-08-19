@@ -18,7 +18,7 @@ export class UserService {
 
   login(username: string, password: string) {
     let result : boolean;
-    const req = this.http.post('//localhost:8080/login', {
+    const req = this.http.post('https://vmsys-api.herokuapp.com/login', {
       'username': username,
       'password': password
     })
@@ -56,7 +56,7 @@ export class UserService {
   }
 
   modifyUserdata(user: any) {
-    const req = this.http.post('//localhost:8080/account/update', user).subscribe( res => {
+    const req = this.http.post('https://vmsys-api.herokuapp.com/account/update', user).subscribe( res => {
       if (res === true) {
         localStorage.removeItem('user');
         localStorage.setItem('user', JSON.stringify(user));
@@ -66,7 +66,7 @@ export class UserService {
   }
 
   registerNewUser(user: any): Observable<any> {
-    return this.http.post('//localhost:8080/account/create', user);
+    return this.http.post('https://vmsys-api.herokuapp.comaccount/create', user);
     // const req = this.http.post('//localhost:8080/account/create', user).subscribe( res => {
     //   return res;
     // });

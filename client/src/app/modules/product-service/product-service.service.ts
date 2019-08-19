@@ -10,10 +10,10 @@ export class ProductServiceService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any | null> {
-    return this.http.get('//localhost:8080/products');
+    return this.http.get('https://vmsys-api.herokuapp.com/products');
   }
 
   updateProduct(product): Observable<any | null> {
-    return this.http.post('//localhost:8080/products/update', product);
+    return this.http.post('https://vmsys-api.herokuapp.com/products/update', product);
   }
 }
