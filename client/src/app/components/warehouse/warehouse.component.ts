@@ -59,7 +59,6 @@ export class WarehouseComponent implements OnInit {
   }
 
   getData() {
-    console.log('getData');
     if (this.dataCopy.length === 0) {
       this.productService.getAll().subscribe(data => {
         this.dataSource = new MatTableDataSource<TableElement>(data);
@@ -70,25 +69,20 @@ export class WarehouseComponent implements OnInit {
         this.address = data.address;
       });
     } else {
-      console.log('else');
       this.dataSource = new MatTableDataSource<TableElement>(this.dataCopy);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }
-    console.log(this.dataSource.data);
     this.needRefresh = false;
   }
 
   onAddressSaveClicked() {
     this.warehouseService.updateAddress(this.address).subscribe(data => {
-      console.log(data);
     });
   }
 
   onRowSaveClicked(product) {
-    console.log(product);
     this.productService.updateProduct(product).subscribe(data => {
-      console.log(data);
     });
   }
 

@@ -57,7 +57,7 @@ export class SuppliesComponent implements OnInit {
       waypoints: [ ],
       routeWhileDragging: true,
       showAlternatives: true,
-      router: L.Routing.graphHopper('8756735b-b600-4818-9dad-3b1b456601ef', {
+      router: L.Routing.graphHopper('1c34de8d-f28e-4606-98e9-8efec60f41f3', {
         serviceUrl: 'https://graphhopper.com/api/1/route'
       })
     });
@@ -115,7 +115,7 @@ export class SuppliesComponent implements OnInit {
                 const optBodyReq = {vehicles, services};
                 this.graphhopperService.postForOptimization(optBodyReq).subscribe(jobID => {
                   let processed = 0;
-                  this.delay(2500).then(() => {
+                  this.delay(3000).then(() => {
                     this.graphhopperService.getJobStatus(jobID.job_id).subscribe(response => {
                       if (response.status === 'finished') {
                         processed = 1;

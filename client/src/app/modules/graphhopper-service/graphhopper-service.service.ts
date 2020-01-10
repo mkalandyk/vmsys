@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const key = '8756735b-b600-4818-9dad-3b1b456601ef'; // '88fb14b8-1e1b-4f83-8402-c193eb73f5fe';
+const key = '1c34de8d-f28e-4606-98e9-8efec60f41f3'; // '88fb14b8-1e1b-4f83-8402-c193eb73f5fe';
 
 @Injectable({
   providedIn: 'root'
